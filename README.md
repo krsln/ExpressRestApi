@@ -5,7 +5,10 @@ RESTful API with Node.js, Express, Mongoose using TypeScript
 ```json5
 {
   "scripts": {
-    "startApi": "nodemon src/app/API/server.ts", 
+    "dev": "tsc && nodemon ./dist/server.js",
+    "prod": "tsc && nodemon ./dist/server.js",
+    "start2": "ts-node ./src/server.ts",
+    "start": "nodemon src/server.ts"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -24,28 +27,24 @@ RESTful API with Node.js, Express, Mongoose using TypeScript
   }
 }
 ```
-
-###### tsconfig.app
-```json
-{
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true
-  }
-}
-```
-
+ 
 ###### tsconfig
 ```json
 {
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": true,
     "outDir": "./dist",
-    "resolveJsonModule": true,
-    "strict": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  }
+    "baseUrl": "./src",
+    "esModuleInterop": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
 ```
